@@ -1,0 +1,595 @@
+<!-- Header {{{ -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/sticky-header/bootstrap-table-sticky-header.css" rel="stylesheet">
+
+    <title>Furniture Input</title>
+    <style>
+      .custom-control-lg .custom-control-label::before,
+      .custom-control-lg .custom-control-label::after {
+          top: 0.1rem !important;
+          left: -2rem !important;
+          width: 1.25rem !important;
+          height: 1.25rem !important;
+      }
+
+      .custom-control-lg .custom-control-label {
+          margin-left: 0.5rem !important;
+          font-size: 1rem !important;
+      }
+    </style>
+  </head>
+<!-- // Header }}} -->
+
+<!-- Nav {{{ -->
+  <nav>
+  <div class="nav nav-pills nav-fill btn-lg" id="nav-tab" role="tablist">
+    <a class="nav-item nav-link active" id="nav-database-tab" data-toggle="tab"
+        href="#nav-database" role="tab" aria-controls="nav-database"
+        aria-selected="true">Database</a>
+    <a class="nav-item nav-link" id="nav-create-tab" data-toggle="tab"
+        href="#nav-create" role="tab" aria-controls="nav-create"
+        aria-selected="false">Add Furniture</a>
+  </div>
+  </nav>
+<!--  // Nav }}} -->
+
+<!-- Database {{{ -->
+
+  <body class="container">
+
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-database" role="tabpanel"
+        aria-labelledby="nav-database-tab">
+       <div class="container">
+       <h4 style="margin-top:1rem">Furniture Database</h4><br>
+       <!--        <h5>Type values to filter inventory</h5> -->
+       <!--        <input class="form-control" id="myInput" type="text" placeholder="Search.."> -->
+       <!--        <br> -->
+       <div id="toolbar">
+           <button id="remove" class="btn btn-danger" disabled>
+               <i class="glyphicon glyphicon-remove"></i> Delete
+           </button>
+       </div>
+       <div id="table-container">
+           <!--  <table id="table" class="table table-sm table-hover table-dark -->
+           <!--              table-striped" data-pagination="true" data-toggle="table" -->
+           <!--                 data-search="true"> -->
+           <table id="table"
+                  data-toggle="table"
+                  data-toolbar="#toolbar"
+                  data-searh="true"
+                  data-search="true"
+                  data-url="test.json"
+                  data-click-to-select="true"
+                  data-pagination="true"
+                  data-show-columns="true"
+                  data-checkbox-header="false"
+                  data-click-to-select="true"
+                  data-show-export="true"
+                  data-mobile-responsive="true"
+                  >
+           <thead class="thead-dark">
+               <!-- <tbody id="mytable"> -->
+             <tr>
+
+               <th data-field="state" data-checkbox="true"></th>
+               <th data-formatter="runningFormatter">Index</th>
+               <th data-field="furniture-name">Furniture Name</th>
+               <th data-field="furniture-id">ID Number</th>
+               <th data-field="furniture-colour">Colour</th>
+               <th data-field="furniture-type">Type</th>
+               <th data-field="furniture-subtype">Sub-Type</th>
+               <th data-field="furniture-size">Size</th>
+               <th data-field="furniture-desc">Description</th>
+               <th data-field="furniture-price">Price</th>
+               <th data-field="furniture-sprice">Sale Price</th>
+               <th data-field="furniture-room">Rooms Used</th>
+               <th data-field="date-bought">date-bought</th>
+               <th data-field="date-added">date-added</th>
+               <th data-field="furniture-location">location</th>
+             </tr>
+             <!--            </tbody> -->
+           </thead>
+           <tbody id="mytable">
+           </tbody>
+         </table>
+       </div>
+
+      </div>
+    </div>
+<!--  // Database }}} -->
+
+<!-- Form {{{ -->
+
+    <div class="tab-pane fade" id="nav-create" role="tabpanel"
+        aria-labelledby="nav-create-tab">
+
+      <div class="container">
+          <h4 style="margin-top:1rem">Furniture Input</h4><br>
+        <form id="furniture-create">
+          <div class="form-group row">
+            <label for="furniture-name" class="col-lg-2 col-form-label-lg">Furniture Name</label>
+            <div class="col-sm-10">
+              <input id="furniture-name" name="furniture-name" class="form-control form-control-lg" type="text"
+              placeholder="Type Furniture Name Here">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="furniture-name" class="col-lg-2 col-form-label-lg">Colour</label>
+            <div class="col-sm-10">
+              <select id="furniture-colour" name="furniture-colour" class="form-control form-control-lg">
+                  <option value="" disabled selected>Select Furniture
+                    Colour</option>
+                  <option value="">White</option>
+                  <option value="">Blue</option>
+                  <option value="">Red</option>
+                  <option value="">Green</option>
+                  <option value="">Black</option>
+                  <option value="">Brown</option>
+                  <option value="">Azure</option>
+                  <option value="">Ivory</option>
+                  <option value="">Teal</option>
+                  <option value="">Silver</option>
+                  <option value="">Purple</option>
+                  <option value="">Navy Blue</option>
+                  <option value="">Pea Green</option>
+                  <option value="">Gray</option>
+                  <option value="">Orange</option>
+                  <option value="">Maroon</option>
+                  <option value="">Charcoal</option>
+                  <option value="">Aquamarine</option>
+                  <option value="">Coral</option>
+                  <option value="">Fuchsia</option>
+                  <option value="">Wheat</option>
+                  <option value="">Lime</option>
+                  <option value="">Crimson</option>
+                  <option value="">Khaki</option>
+                  <option value="">Hot Pink</option>
+                  <option value="">Magenta</option>
+                  <option value="">Olden</option>
+                  <option value="">Plum</option>
+                  <option value="">Olive</option>
+                  <option value="">Cyan</option>
+                </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="furniture-size" class="col-lg-2 col-form-label-lg">Size</label>
+            <div class="col-sm-10">
+                <select id="furniture-size" name="furniture-size" class="form-control form-control-lg">
+                  <option value="" disabled selected>Select Furniture
+                    Size</option>
+                  <option value="very-small">Very Small</option>
+                  <option value="small">Small</option>
+                  <option value="medium">Medium</option>
+                  <option value="large">Large</option>
+                  <option value="extra-large">Extra Large</option>
+                </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="furniture-type" class="col-lg-2 col-form-label-lg">
+                Primary Type</label>
+            <div class="col-sm-10">
+                <select id="furniture-type" name="furniture-type" class="form-control form-control-lg">
+                    <option value="" disabled selected>Select Furniture
+                      Type</option>
+                    <option value="chair">Chair</option>
+                    <option value="sofa">Sofa</option>
+                    <option value="table">Table</option>
+                    <option value="bed">Bed</option>
+                    <option value="cabinet/storage">Cabinet/Storage</option>
+                    <option value="accessories">Accessories</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="furniture-subtype" class="col-lg-2 col-form-label-lg">
+                Secondary Type</label>
+            <div class="col-sm-10">
+                <select id="furniture-subtype" name="furniture-subtype" class="form-control form-control-lg">
+                    <option value="" disabled selected>Choose Primary Type
+                      First</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="furniture-date-bought" class="col-lg-2 col-form-label-lg">
+                Date Bought</label>
+            <div class="col-sm-10">
+                <input id="datepicker" name="date-bought" class="form-control form-control-lg datepicker" type="text">
+            </div>
+        </div>
+        <div class="form-group row">
+          <label for="furniture-price" class="col-lg-2 col-form-label-lg">Price</label>
+          <div class="col-sm-10">
+            <input id="furniture-price" name="furniture-price" class="form-control form-control-lg" type="text"
+            placeholder="Furniture Price">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="furniture-sprice" class="col-lg-2 col-form-label-lg">Sale Price</label>
+          <div class="col-sm-10">
+            <input id="furniture-sprice" name="furniture-sprice" class="form-control form-control-lg" type="text"
+            placeholder="Furniture Sale Price">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="furniture-location" class="col-lg-2 col-form-label-lg">
+              Furniture Location</label>
+          <div class="col-sm-10">
+              <select id="furniture-location" name="furniture-location" class="form-control form-control-lg">
+                  <option value="" disabled selected>Select an option</option>
+                  <option value="storage">Storage</option>
+                  <option value="home">Home</option>
+              </select>
+          </div>
+        </div>
+        <div class="form-group row">
+        <div class="col-lg-2 col-form-label-lg">Used in Rooms</div>
+        <div class="col-sm-10">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="bedroom" name="bedroom"
+              value="bedroom">
+            <label class="form-check-label form-control-lg" for="bed">Bed</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="bath" name="bath"
+              value="bath">
+            <label class="form-check-label form-control-lg" for="bath">Bath</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="kids" name="kids"
+              value="kids">
+            <label class="form-check-label form-control-lg" for="kids">Kids</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="mud" name="mud"
+              value="mud">
+            <label class="form-check-label form-control-lg"for="mud">Mud</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="kitchen" name="kitchen"
+              value="kitchen">
+            <label class="form-check-label form-control-lg" for="kitchen">Kitchen</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="living" name="living"
+              value="living">
+            <label class="form-check-label form-control-lg" for="living">Living</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="office" name="office"
+              value="office">
+            <label class="form-check-label form-control-lg" for="office">Office</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="dining" name="dining"
+              value="dining">
+            <label class="form-check-label form-control-lg" for="dining">Dining</label>
+          </div>
+        </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="furniture-desc" class="col-lg-2 col-form-label-lg">
+            Description</label>
+          <div class="col-sm-10">
+            <textarea class="form-control form-control-lg" id="furniture-desc" name="furniture-desc"
+              rows="3"></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="furniture-pic" class="col-lg-2 col-form-label-lg">
+            Picture Input</label>
+          <div class="col-sm-10">
+            <input type="file" class="form-control-file form-control-lg"
+              id="furniture-pic">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label for="furniture-receipt" class="col-lg-2 col-form-label-lg">
+            Receipt Input</label>
+          <div class="col-sm-10">
+            <input type="file" class="form-control-file form-control-lg"
+              id="furniture-receipt">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-lg-2"></div>
+          <div class="col-sm-10 text-center">
+            <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+          </div>
+        </div>
+        </form>
+    </div>
+  </div>
+  </div>
+<!--  // Form }}} -->
+
+<!-- Scripts {{{ -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <!-- <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <!--<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/sticky-header/bootstrap-table-sticky-header.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/mobile/bootstrap-table-mobile.min.js"></script>
+
+    <script src="https://unpkg.com/tableexport.jquery.plugin/tableExport.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF/jspdf.min.js"></script>
+    <script src="https://unpkg.com/tableexport.jquery.plugin/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.16.0/dist/extensions/export/bootstrap-table-export.min.js"></script>
+    <script>
+    var idData;
+    $(document).ready(function() {
+        $.getJSON("id.json", function(json_data) {
+            console.log(json_data);
+            idData = json_data;
+        });
+
+    });
+      function runningFormatter(value, row, index) {
+        return index+1;
+      }
+
+      var $table = $('#table');
+      $("#table").bootstrapTable({
+          exportTypes: ['json', 'txt', 'csv', 'excel', 'pdf'],
+      });
+
+/*
+      var $table = $('#table');
+      var container = $('#table-container');
+      var offset = container.offset();
+      var rightOffset = offset.left + container.outerWidth();
+
+      $("#table").bootstrapTable({
+          stickyHeader: true,
+          stickyHeaderOffsetLeft: offset.left,
+          stickyHeaderOffsetRight: rightOffset
+      });
+*/
+
+      /*
+      $.getJSON( "test.json", function( json_data ) {
+          console.log(json_data);
+          $('#table').bootstrapTable({
+              data: json_data,
+              pagination: true,
+              formatLoadingMessage: function() { return ''; }
+          })
+          $("#table").bootstrapTable("hideLoading");
+      });
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#mytable tr").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+       });
+       */
+    </script>
+    <script type="text/css">
+      .datepicker table tr td span {
+            width: 100% !important;
+        }
+      input.form-check-label{
+        width: 50px;
+        height: 50px;
+      }
+    </script>
+    <script>
+        let options = {
+                            "chair":["accent", "stool", "bench", "dining",
+                                "office"],
+                            "sofa":["sofa", "loveseat", "recliner", "ottomon"],
+                            "other":["fireplace", "coat rack", "tv"],
+                            "bed":["king frame", "queen frame", "double frame",
+                                "king headboard", "queen headboard",
+                                "double headboard", "single headboard",
+                                "futon", "sheets", "blanket"],
+                            "table":["end", "coffee", "accent", "dining"],
+                            "cabinet/storage":["entertainment unit",
+                                "shelf", "dresser", "chest", "night stand",
+                                "buffet", "bookcase", "storage"],
+                            "accessories":["rug", "wall art", "lamp", "mirror",
+                                "other"]
+                     };
+
+       $('.datepicker').datepicker({
+       });
+      // When an option is changed, search the above for matching choices
+      $('#furniture-type').on('change', function() {
+          // Set selected option as variable
+          var selectValue = $(this).val();
+
+          // Empty the target field
+          $('#furniture-subtype').empty();
+
+          // For each chocie in the selected option
+          for (i = 0; i < options[selectValue].length; i++) {
+          // Output choice in the target field
+          $('#furniture-subtype').append("<option value='" + options[selectValue][i]
+              + "'>" + options[selectValue][i] + "</option>");
+          }
+      });
+
+      $('#furniture-create').on('submit', function(e) {
+
+          // functions
+          function createID(type) {
+              // args: furniture type
+
+              // lookup furiture type code
+              var codes = {
+                 "chair":"CH",
+                 "sofa":"SF",
+                 "other":"OT",
+                 "bed":"BD",
+                 "table":"TB",
+                 "cabinet/storage":"CS",
+                 "accessories":"AC"
+              }
+              var typeCode = codes[type];
+              console.log(idData);
+
+              // load data
+/*
+              idData = {
+                 "CH":[],
+                 "SF":[],
+                 "OT":[],
+                 "BD":[],
+                 "TB":['0000', '1111', '2222', '3333','4444','5555', '6666',
+                  '7777', '8888','9999','1010','2020','3030',
+                  '5050', '6060', '7070', '8080', '9090', '0001', '0002',
+                  '0003', '0004', '0005', '0006', '0007', '0008', '0009',
+                  '0110', '0220', '0330', '0440', '0550', '0660', '0770',
+                  '0880', '0990', '1000', '2000', '3000', '4000', '5000',
+                  '6000', '7000', '8000', '9000'
+],
+                 "CS":[],
+                 "AC":[]
+             };
+*/
+
+
+              // create new id and check if in data
+              var numbers = [
+                  '0000', '1111', '2222', '3333','4444','5555', '6666',
+                  '7777', '8888','9999','1010','2020','3030',
+                  '5050', '6060', '7070', '8080', '9090', '0001', '0002',
+                  '0003', '0004', '0005', '0006', '0007', '0008', '0009',
+                  '0110', '0220', '0330', '0440', '0550', '0660', '0770',
+                  '0880', '0990', '1000', '2000', '3000', '4000', '5000',
+                  '6000', '7000', '8000', '9000'
+              ];
+              var numLen = numbers.length;
+              var idIT = 0;
+              var id = numbers[idIT];
+              var uniqueID = false;
+              while (uniqueID == false) {
+                  if (!idData[typeCode].includes(id)) {
+                      uniqueID = true;
+                  }
+                  else {
+                      if (idIT < numLen-1) {
+                          idIT++;
+                          id = numbers[idIT];
+                      }
+                      else {
+                          id = String(Math.floor(Math.random() * 10000));
+                          var id_temp = id;
+                          if (id_temp.length == 1) { id = '000' + id_temp; }
+                          else if (id_temp.length == 2) { id = '00' + id_temp; }
+                          else if (id_temp.length == 3) { id = '0' + id_temp; }
+                      }
+                  }
+              }
+              // update id info
+              idData[typeCode].push(id);
+              console.log('new code added:');
+              console.log(idData);
+              $.post("updateID.php", {type: typeCode, id: id}, function () {
+                  console.log('id updated');
+              });
+              // return ID
+              var prodNum = "" + typeCode + id;
+              console.log('product number ' + prodNum + ' generated');
+              return prodNum;
+          }
+
+
+
+          e.preventDefault();
+          var obj = {};
+          obj["furniture-room"]= [];
+          var elements = this.querySelectorAll('input, select, textarea');
+          for (var i=0; i<elements.length; i++) {
+            var element = elements[i];
+            var name = element.name;
+            var value = element.value;
+            if (name) {
+              if (name!='kitchen' && name!='bath' && name!='bedroom' && name!='kids'
+                && name!='mud' && name!='living' && name!='office'
+                && name!='dining') {
+                  obj[name] = value;
+              }
+              else {
+                if (element.checked) {obj["furniture-room"].push(value); }
+              }
+            }
+            else { console.log("no name value in element"); }
+
+            function formatDate(date) {
+                var d = new Date(date),
+                    month = '' + (d.getMonth() + 1),
+                    day = '' + d.getDate(),
+                    year = d.getFullYear();
+
+                if (month.length < 2)
+                    month = '0' + month;
+                if (day.length < 2)
+                    day = '0' + day;
+
+                return [month, day, year].join('/');
+            }
+            var dateNew = new Date();
+            var dateAdded = formatDate(dateNew);
+            obj["date-added"] = dateAdded;
+
+          }
+          var numID = createID(obj['furniture-type']);
+          obj['furniture-id'] = numID;
+          console.log(obj);
+          var msg = JSON.stringify(obj);
+          /*
+
+          $.ajax
+              ({
+                  type: "GET",
+                  dataType : 'json',
+                  async: false,
+                  url: 'test2.php',
+                  data: { data: msg },
+                  success: function () {alert("Thanks!"); },
+                  failure: function() {alert("Error!");}
+              });
+              */
+          //$.post("test.php", {msg: msg}, function () {
+          $.post("test.php", {msg: msg}, function () {
+               console.log("msg received");
+          });
+
+
+          var $table = $('#table');
+          $table.bootstrapTable('refresh');
+
+      });
+
+
+
+    </script>
+</body>
+</html>
+<!-- Scripts }}} -->

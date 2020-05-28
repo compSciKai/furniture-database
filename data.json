@@ -1,0 +1,13 @@
+[
+  {"FurnitureName" : "Black Sofa","Colour" : "Black","size" : "large", "type" : "sofa", "price" : "2000", "sale-price" : "1000",
+      "date-bought" : "2019-06-20", "sold" : "no", "sold-price" : "", "image-name" : "sofa-black.jpg", "has-receipt" : "no",
+      "location" : "storage"},
+  {"FurnitureName" : "red bed","Colour" : "Red","size" : "large", "type" : "bed", "price" : "5000", "sale-price" : "4000",
+      "date-bought" : "2019-02-30", "sold" : "no", "sold-price" :"", "image-name":"red-bed.jpg", "has-receipt":"no",
+      "location":"storage"
+  },
+  {"FurnitureName":"yellow picture","Colour":"yellow","size":"small", "type":"picture", "price":"50", "sale-price":"40",
+      "date-bought":"2019-02-30", "sold":"no", "sold-price":"", "image-name":"yellow-picture.jpg", "has-receipt":"no",
+      "location":"storage"
+  }
+]
