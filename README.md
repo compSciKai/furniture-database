@@ -1,4 +1,4 @@
-# furniture-datebase
+# furniture-database
 
 This project stores furniture info + images in a json database.
 
