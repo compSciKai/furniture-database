@@ -1,5 +1,7 @@
 # furniture-database
 
+![](furniture-database.gif)
+
 This project stores furniture info + images in a json database.
 
 The user is able to see furniture as a table with filter, export and pagation functionality.
